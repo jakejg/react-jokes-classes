@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Joke from "./Joke";
+import JokeClass from "./JokeClass";
 import "./JokeList.css";
 
 
@@ -67,7 +67,7 @@ class JokeListClass extends Component {
 
     render() {
             let sortedJokes = [...this.state.jokes].sort((a, b) => b.votes - a.votes);
-            
+                
             return (
             <div className="JokeList">
                 <button className="JokeList-getmore" onClick={this.generateNewJokes}>
@@ -78,13 +78,12 @@ class JokeListClass extends Component {
                     {this.state.jokes.length === 0 ? 
                     <i className="fa fa-spinner fa-spin fa-4x" /> : 
                     sortedJokes.map(j => (
-                      <Joke text={j.joke} key={j.id} id={j.id} votes={j.votes} vote={this.vote} />
+                     <JokeClass text={j.joke} key={j.id} id={j.id} votes={j.votes} vote={this.vote} />
                     ))}
                 </div>
                 
                 <button className="JokeList-getmore" onClick={this.resetVotes}>Clear Votes</button>
                 
-            
             </div>)
     }
 }
